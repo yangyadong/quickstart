@@ -7,8 +7,9 @@ import (
 )
 
 func main() {
-	common.InitRedis()
-	common.InitMysql()
+	common.InitConfig()
+	//common.InitRedis()
+	//common.InitMysql()
 	beego.Run()
 }
 
