@@ -187,9 +187,17 @@ func getPrice(phone string) (bool, int, int, string) {
 			}
 			// 判断这个奖项被抽走了几次了，是否达到该奖项可获取上限
 			if lotteryRes == 1 && prize.Num != -1 {
-				count := model.GetLotteryCount(prize.Id)
-				if count >= prize.Num {
+				prizeId := "prize" + "_" + strconv.Itoa(prize.Id)
+				prizeNumAll, err := common.RedisClient.Get(prizeId).Result()
+				prizeNumAllCache, err1 := strconv.Atoi(prizeNumAll)
+				if err != nil || err1 != nil || prizeNumAll == "" || prizeNumAllCache == 0 {
+					prizeNumAllCache = model.GetLotteryCount(prize.Id)
+				}
+				if prizeNumAllCache >= prize.Num {
 					lotteryRes = 0
+				} else {
+					prizeNumAllCache++
+					common.RedisClient.Set(prizeId, prizeNumAllCache, 1*time.Hour)
 				}
 			}
 			// 中奖了--将有每日获取上限的奖品，今日获取的总次数缓存到redis

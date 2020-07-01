@@ -3,21 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="38ca89c9-7a1d-4d90-8b22-42f253b7a518" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/function.go" beforeDir="false" afterPath="$PROJECT_DIR$/common/function.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conf/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/conf/config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/captcha.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/captcha.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/controllers_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/controllers_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/default.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/default.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/lottery.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/lottery.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/lotteryList.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/participate.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/participate.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routers/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/routers/router.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/lottery/lottery.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/views/lottery/lottery.tpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/lottery/lotteryList.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/views/lottery/lotteryList.tpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/lottery/lotteryRes.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/views/lottery/lotteryRes.tpl" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
