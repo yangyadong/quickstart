@@ -13,9 +13,17 @@ type UserController struct {
 }
 
 func (c *UserController) Get() {
-	c.Data["Website"] = "user"
-	c.Data["Email"] = "astaxie@gmail.com"
-	c.TplName = "index.tpl"
+	page, err := c.GetInt("page", 1)
+	if err != nil || page < 1 {
+		page = 1
+	}
+	limit, err := c.GetInt("limit", 10)
+	if err != nil || limit < 1 {
+		limit = 10
+	}
+	count, users := model.GetUserList(page, limit)
+	fmt.Println(count, users)
+	return
 }
 
 func (c *UserController) Post() {

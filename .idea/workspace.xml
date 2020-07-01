@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38ca89c9-7a1d-4d90-8b22-42f253b7a518" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/controllers/controllers_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/lottery.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/lottery.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/function.go" beforeDir="false" afterPath="$PROJECT_DIR$/common/function.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/mysql.go" beforeDir="false" afterPath="$PROJECT_DIR$/common/mysql.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/captcha.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/captcha.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/user.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routers/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/routers/router.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -45,7 +44,7 @@
     <property name="configurable.Project.GOPATH.is.expanded" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/controllers" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/model" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -57,6 +56,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\workspace\quickstart\model" />
       <recent name="D:\workspace\quickstart\controllers" />
       <recent name="D:\workspace\quickstart\common" />
     </key>
@@ -73,7 +73,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Go Test.TestGetUSer in quickstart/controllers">
+  <component name="RunManager" selected="Go Build.go build quickstart">
     <configuration name="go build quickstart" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="quickstart" />
       <working_directory value="$PROJECT_DIR$" />
@@ -129,8 +129,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Test.TestGetUSer in quickstart/controllers" />
         <item itemvalue="Go Build.go build quickstart" />
+        <item itemvalue="Go Test.TestGetUSer in quickstart/controllers" />
         <item itemvalue="Go Test.TestInitConfig in quickstart/common" />
         <item itemvalue="Go Test.TestBeego in quickstart/tests (1)" />
       </list>

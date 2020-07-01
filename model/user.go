@@ -26,9 +26,28 @@ func GetUser(phone string) User {
 	user := User{}
 	err := common.Db.
 		Where("phone = ?", phone).
-		First(&user).Error
+		Last(&user).Error
 	if err != nil {
 		logs.Info("get user is fail: %v", err)
 	}
 	return user
+}
+
+func GetUserList(page int, limit int) (int, []User) {
+	offset := (page - 1) * limit
+	var users []User
+	var count int
+	err := common.Db.Find(&users).Count(&count).Error
+	if err != nil {
+		logs.Info("get user is fail: %v", err)
+		return count, users
+	}
+	err = common.Db.
+		Offset(offset).
+		Limit(limit).
+		Find(&users).Error
+	if err != nil {
+		logs.Info("get user is fail: %v", err)
+	}
+	return count, users
 }
