@@ -19,14 +19,14 @@ func (c *UserController) Get() {
 }
 
 func (c *UserController) Post() {
-	phone := c.GetString("phone")
+	phone := c.GetString("phone", "")
 	checkRes := common.CheckPhone(phone)
 	if !checkRes {
 		c.Data["json"] = common.SendResponse(400, "error", "phone number is illegal")
 		c.ServeJSON()
 		return
 	}
-	captcha := c.GetString("captcha")
+	captcha := c.GetString("captcha", "")
 	checkRes = checkCaptcha(phone, captcha)
 	if !checkRes {
 		c.Data["json"] = common.SendResponse(400, "error", "captcha is fail")
@@ -39,7 +39,7 @@ func (c *UserController) Post() {
 		c.ServeJSON()
 		return
 	}
-	desc := c.GetString("desc")
+	desc := c.GetString("desc", "")
 	user := model.User{Phone: phone, Desc: desc, CreatedAt: time.Now(), UpdatedAt: time.Now()}
 	res := model.AddUser(user)
 	if res != nil {

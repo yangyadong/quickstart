@@ -30,8 +30,8 @@ func (c *CaptchaController) Post() {
 func setPhoneCaptcha(phone string) bool {
 	captcha := common.GenValidateCode(6)
 	captchaIndex := getCaptchaIndex(phone)
-	err := common.RedisClient.SetNX(captchaIndex, captcha, 15 * time.Minute).Err()
-	if err != nil {
+	res, err := common.RedisClient.SetNX(captchaIndex, captcha, 15 * time.Minute).Result()
+	if err != nil || !res{
 		return false
 	}
 	common.SendCaptchaMsg(phone, captcha)
