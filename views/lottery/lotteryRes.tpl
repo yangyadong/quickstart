@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>用户列表</title>
+  <title>抽奖结果</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <style type="text/css">
 
@@ -12,7 +12,7 @@
 
 <body>
   <header>
-    <h2>{{.lotteryRes}}</h2>
+    <h2>{{.lotteryRes}}</h2><a href="/lotteryList">查看中奖名单</a>
   </header>
 </body>
 </html>

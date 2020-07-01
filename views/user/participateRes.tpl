@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>用户列表</title>
+  <title>报名结果</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <style type="text/css">
 

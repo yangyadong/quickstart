@@ -2,16 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38ca89c9-7a1d-4d90-8b22-42f253b7a518" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/controllers/participate.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/lottery/lottery.tpl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/lottery/lotteryRes.tpl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/user/participateRes.tpl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/user/userList.tpl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/lotteryList.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/lottery/lotteryList.tpl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/lottery.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/lottery.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/prize.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/prize.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/lottery.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/lottery.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routers/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/routers/router.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/lottery/lottery.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/views/lottery/lottery.tpl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/lottery/lotteryRes.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/views/lottery/lotteryRes.tpl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/user/addUser.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/views/user/addUser.tpl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/user/participateRes.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/views/user/participateRes.tpl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/user/userList.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/views/user/userList.tpl" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,7 +49,7 @@
     <property name="configurable.Project.GOPATH.is.expanded" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/views/lottery" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/controllers" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -60,9 +61,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\workspace\quickstart\controllers" />
       <recent name="D:\workspace\quickstart\views\lottery" />
       <recent name="D:\workspace\quickstart\views\user" />
-      <recent name="D:\workspace\quickstart\controllers" />
       <recent name="D:\workspace\quickstart\model" />
       <recent name="D:\workspace\quickstart\common" />
     </key>

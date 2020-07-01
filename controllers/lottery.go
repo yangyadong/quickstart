@@ -54,6 +54,7 @@ func (c *LotteryController) Post() {
 		Status: lotteryRes,
 		Phone: phone,
 		Prize: priceId,
+		PrizeName: priceName,
 		CreatedAt: time.Now(),
 		UpdatedAt: time.Now(),
 	}

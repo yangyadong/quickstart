@@ -9,6 +9,7 @@ import (
 type Lottery struct {
 	Id        int       `gorm:"id" json:"id"`
 	Phone     string    `gorm:"phone" json:"phone"`
+	PrizeName string    `gorm:"prize_name" json:"prize_name"`
 	Prize     int       `gorm:"prize" json:"prize"`
 	Status    int       `gorm:"num" json:"num"`
 	CreatedAt time.Time `gorm:"created_at" json:"created_at"`
@@ -63,4 +64,24 @@ func GetLotteryCount(prize int) int {
 		logs.Info("get prize is fail: %v", err)
 	}
 	return count
+}
+
+func GetLotteryList(page int, limit int) (int, []Lottery) {
+	offset := (page - 1) * limit
+	var lotterys []Lottery
+	var count int
+	err := common.Db.Where("status = ?", 1).Find(&lotterys).Count(&count).Error
+	if err != nil {
+		logs.Info("get lottery list is fail: %v", err)
+		return count, lotterys
+	}
+	err = common.Db.
+		Where("status = ?", 1).
+		Offset(offset).
+		Limit(limit).
+		Find(&lotterys).Error
+	if err != nil {
+		logs.Info("get lottery list is fail: %v", err)
+	}
+	return count, lotterys
 }
