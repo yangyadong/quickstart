@@ -35,6 +35,15 @@ func (c *LotteryController) Post() {
 		c.Data["lotteryRes"] = "请先报名参与"
 		return
 	}
+	lotteryIndex := "phone_lottery: " + phone
+	setRes, err := common.RedisClient.SetNX(lotteryIndex, "true", 5 * time.Minute).Result()
+	if err != nil || !setRes {
+		c.Data["json"] = common.SendResponse(400, "error", "phone lottery fail")
+		//c.ServeJSON()
+		c.Data["lotteryRes"] = "错误，请稍后再试"
+		return
+	}
+	defer common.RedisClient.Del(lotteryIndex)
 	// 判断用户今天是否已经抽过奖了
 	lottery := model.GetLotteryInfo(phone)
 	if lottery.Id != 0 {
