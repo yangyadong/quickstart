@@ -9,7 +9,9 @@ import (
 func main() {
 	common.InitConfig()
 	common.InitMysql()
+	defer common.Db.Close()
 	common.InitRedis()
+	defer common.RedisClient.Close()
 	beego.Run()
 }
 
