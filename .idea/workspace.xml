@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38ca89c9-7a1d-4d90-8b22-42f253b7a518" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/controllers/lottery.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/lottery.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/prize.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routers/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/routers/router.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/lottery.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/lottery.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/lottery.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/lottery.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
