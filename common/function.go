@@ -41,7 +41,7 @@ func GenValidateCode(width int) string {
 	return builder.String()
 }
 
-func SendCaptchaMsg(phone string, captcha string)  {
+func SendCaptchaMsg(phone string, captcha string) {
 	msg := fmt.Sprintf("【腾讯科技】%v (短信验证码，15分钟内有效)", captcha)
 	fmt.Println(phone, msg)
 	//send(phone, msg)

@@ -1,14 +1,69 @@
 package controllers
 
 import (
+	"bytes"
 	"encoding/json"
 	"github.com/astaxie/beego"
+	"github.com/tealeg/xlsx"
 	"math/rand"
+	"net/http"
 	"quickstart/common"
 	"quickstart/model"
 	"strconv"
 	"time"
 )
+
+type ExportLotteryController struct {
+	beego.Controller
+}
+
+func (c *ExportLotteryController) Get() {
+	file := xlsx.NewFile()
+	sheet, _ := file.AddSheet("sheet")
+	//设置表格头
+	row := sheet.AddRow()
+	var headers = []string{"序号", "账号", "奖品", "时间"}
+	for _, header := range headers {
+		row.AddCell().Value = header
+	}
+	_, dataArr := model.GetLotteryList(1, 10000)
+	//写入数据
+	for i, data := range dataArr {
+		row := sheet.AddRow()
+		row.AddCell().Value = strconv.Itoa(i + 1)
+		row.AddCell().Value = data.Phone
+		row.AddCell().Value = data.PrizeName
+		row.AddCell().Value = data.CreatedAt.Format("2006-01-02 15:04:05")
+	}
+	c.Ctx.ResponseWriter.Header().Add("Content-Disposition", "attachment")
+	c.Ctx.ResponseWriter.Header().Add("Content-Type", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+
+	var buffer bytes.Buffer
+	if err := file.Write(&buffer); err != nil {
+		//return err
+	}
+	r := bytes.NewReader(buffer.Bytes())
+	http.ServeContent(c.Ctx.ResponseWriter, c.Ctx.Request, "", time.Now(), r)
+}
+
+type LotteryListController struct {
+	beego.Controller
+}
+
+func (c *LotteryListController) Get() {
+	page, err := c.GetInt("page", 1)
+	if err != nil || page < 1 {
+		page = 1
+	}
+	limit, err := c.GetInt("limit", 10)
+	if err != nil || limit < 1 {
+		limit = 10
+	}
+	count, lotterys := model.GetLotteryList(page, limit)
+	c.Data["lotterys"] = lotterys
+	c.Data["count"] = count
+	c.TplName = "lottery/lotteryList.tpl"
+}
 
 type LotteryController struct {
 	beego.Controller
@@ -36,7 +91,7 @@ func (c *LotteryController) Post() {
 		return
 	}
 	lotteryIndex := "phone_lottery: " + phone
-	setRes, err := common.RedisClient.SetNX(lotteryIndex, "true", 5 * time.Minute).Result()
+	setRes, err := common.RedisClient.SetNX(lotteryIndex, "true", 5*time.Minute).Result()
 	if err != nil || !setRes {
 		c.Data["json"] = common.SendResponse(400, "error", "phone lottery fail")
 		//c.ServeJSON()
@@ -60,9 +115,9 @@ func (c *LotteryController) Post() {
 		return
 	}
 	lotteryData := model.Lottery{
-		Status: lotteryRes,
-		Phone: phone,
-		Prize: priceId,
+		Status:    lotteryRes,
+		Phone:     phone,
+		Prize:     priceId,
 		PrizeName: priceName,
 		CreatedAt: time.Now(),
 		UpdatedAt: time.Now(),
@@ -140,7 +195,7 @@ func getPrice(phone string) (bool, int, int, string) {
 			// 中奖了--将有每日获取上限的奖品，今日获取的总次数缓存到redis
 			if prize.NumOfDay != -1 && lotteryRes == 1 {
 				prizeNumOfDayCache += 1
-				common.RedisClient.Set(prizeIndex, prizeNumOfDayCache, 24 * time.Hour)
+				common.RedisClient.Set(prizeIndex, prizeNumOfDayCache, 24*time.Hour)
 			}
 		}
 	}

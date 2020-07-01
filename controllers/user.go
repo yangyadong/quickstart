@@ -70,7 +70,7 @@ func (c *UserController) Post() {
 	//c.ServeJSON()
 }
 
-func checkUser(phone string) (bool, string){
+func checkUser(phone string) (bool, string) {
 	user := model.GetUser(phone)
 	fmt.Println(user)
 	if user.Id != 0 {

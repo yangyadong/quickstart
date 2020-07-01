@@ -12,7 +12,7 @@
 
 <body>
   <header>
-    <h2>{{.lotteryRes}}</h2><a href="/lotteryList">查看中奖名单</a>
+    <h2>{{.lotteryRes}}</h2><a href="/lottery/list">查看中奖名单</a>
   </header>
 </body>
 </html>

@@ -11,5 +11,6 @@ func init() {
 	beego.Router("/user", &controllers.UserController{})
 	beego.Router("/captcha", &controllers.CaptchaController{})
 	beego.Router("/lottery", &controllers.LotteryController{})
-	beego.Router("/lotteryList", &controllers.LotteryListController{})
+	beego.Router("/lottery/list", &controllers.LotteryListController{})
+	beego.Router("/export/lottery", &controllers.ExportLotteryController{})
 }

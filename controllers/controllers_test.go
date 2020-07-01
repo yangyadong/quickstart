@@ -7,7 +7,7 @@ import (
 	"testing"
 )
 
-func TestGetUSer(t *testing.T)  {
+func TestGetUSer(t *testing.T) {
 	common.InitConfig()
 	common.InitMysql()
 	defer common.Db.Close()

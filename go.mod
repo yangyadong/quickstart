@@ -10,4 +10,5 @@ require (
 	github.com/onsi/ginkgo v1.13.0 // indirect
 	github.com/shiena/ansicolor v0.0.0-20151119151921-a422bbe96644 // indirect
 	github.com/smartystreets/goconvey v1.6.4
+	github.com/tealeg/xlsx v1.0.5
 )

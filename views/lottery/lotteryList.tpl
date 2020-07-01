@@ -12,7 +12,7 @@
 
 <body>
   <header>
-    <a href="/lottery">去抽奖</a>
+    <a href="/lottery">去抽奖</a> <a href="/export/lottery">下载中奖名单</a>
     <h2>名单：共{{.count}}份</h2>
     <div>
     <table>
