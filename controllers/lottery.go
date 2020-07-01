@@ -14,31 +14,40 @@ type LotteryController struct {
 	beego.Controller
 }
 
+func (c *LotteryController) Get() {
+	c.TplName = "lottery/lottery.tpl"
+}
+
 func (c *LotteryController) Post() {
+	c.TplName = "lottery/lotteryRes.tpl"
 	phone := c.GetString("phone")
 	checkRes := common.CheckPhone(phone)
 	if !checkRes {
 		c.Data["json"] = common.SendResponse(400, "error", "phone number is illegal")
-		c.ServeJSON()
+		//c.ServeJSON()
+		c.Data["lotteryRes"] = "手机号格式有误"
 		return
 	}
 	checkRes, _ = checkUser(phone)
 	if checkRes {
 		c.Data["json"] = common.SendResponse(400, "error", "this user is not registered")
-		c.ServeJSON()
+		//c.ServeJSON()
+		c.Data["lotteryRes"] = "请先报名参与"
 		return
 	}
 	// 判断用户今天是否已经抽过奖了
 	lottery := model.GetLotteryInfo(phone)
 	if lottery.Id != 0 {
 		c.Data["json"] = common.SendResponse(400, "error", "participated today")
-		c.ServeJSON()
+		//c.ServeJSON()
+		c.Data["lotteryRes"] = "今日已抽奖，请明天再来"
 		return
 	}
-	isPrice, lotteryRes, priceId := getPrice(phone)
+	isPrice, lotteryRes, priceId, priceName := getPrice(phone)
 	if !isPrice {
 		c.Data["json"] = common.SendResponse(500, "error", "Lottery failed")
-		c.ServeJSON()
+		//c.ServeJSON()
+		c.Data["lotteryRes"] = "活动未开始"
 		return
 	}
 	lotteryData := model.Lottery{
@@ -51,14 +60,20 @@ func (c *LotteryController) Post() {
 	res := model.AddLottery(lotteryData)
 	if res != nil {
 		c.Data["json"] = common.SendResponse(400, "error", res)
+		c.Data["lotteryRes"] = "失败，系统错误"
 	} else {
 		c.Data["json"] = common.SendResponse(200, "success", "")
+		if lotteryRes == 1 {
+			c.Data["lotteryRes"] = "恭喜获得 " + priceName + " 一份"
+		} else {
+			c.Data["lotteryRes"] = "再接再厉"
+		}
 	}
-	c.ServeJSON()
+	//c.ServeJSON()
 }
 
 // 开始抽奖
-func getPrice(phone string) (bool, int, int) {
+func getPrice(phone string) (bool, int, int, string) {
 	prizesJson, err := common.RedisClient.Get("prize_cache").Result()
 	var prizes []model.Prize
 	if err != nil || prizesJson == "" {
@@ -84,7 +99,7 @@ func getPrice(phone string) (bool, int, int) {
 	lotteryRes := 0
 	prizesEffectiveCount := len(prizesEffective)
 	if prizesEffectiveCount == 0 {
-		return false, lotteryRes, 0
+		return false, lotteryRes, 0, ""
 	}
 	index := rand.Intn(prizesEffectiveCount)
 	prize := prizesEffective[index]
@@ -119,5 +134,5 @@ func getPrice(phone string) (bool, int, int) {
 			}
 		}
 	}
-	return true, lotteryRes, prize.Id
+	return true, lotteryRes, prize.Id, prize.Name
 }

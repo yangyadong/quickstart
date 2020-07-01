@@ -24,12 +24,12 @@ type Prize struct {
 }
 
 func GetPrizeList() []Prize {
-	yesterday := time.Now().Add(1 * time.Hour).Format("2006-01-02 15:04:05")
-	nowTime := time.Now().Format("2006-01-02 15:04:05")
+	yesterday := time.Now().Add(1 * time.Hour)
+	nowTime := time.Now()
 	var prizes []Prize
 	err := common.Db.
 		Where("start_at <= ?", yesterday).
-		Where("end >= ?", nowTime).
+		Where("end_at >= ?", nowTime).
 		Where("status = ?", 1).
 		Find(&prizes).Error
 	if err != nil {
