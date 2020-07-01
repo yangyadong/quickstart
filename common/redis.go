@@ -1,25 +1,19 @@
 package common
 
 import (
-	"fmt"
 	"github.com/go-redis/redis"
 )
 
-func InitRedis() {
-	var addr = "127.0.0.1:6379"
-	var password = ""
+var RedisClient *redis.Client
 
-	c := redis.NewClient(&redis.Options{
-		Addr:     addr,
-		Password: password,
+func InitRedis() {
+	RedisClient := redis.NewClient(&redis.Options{
+		Addr:     ConfigInfo.Redis.Addr,
+		Password: ConfigInfo.Redis.Pwd,
 	})
-	p, err := c.Ping().Result()
+	_, err := RedisClient.Ping().Result()
 	if err != nil {
-		fmt.Println("redis kill")
+		panic(err)
 	}
-	fmt.Println(p)
-	c.Do("SET", "key", "duzhenxun")
-	rs := c.Do("GET", "key").Val()
-	fmt.Println(rs)
-	c.Close()
+
 }

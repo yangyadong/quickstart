@@ -8,40 +8,22 @@ import (
 )
 
 type User struct {
-	UserId int  `gorm:"primary_key"`
-	Phone string
-	WxopenId string
-	Tcreate *time.Time
-	Tprocess *time.Time
-	Balance int
-	Src string
-	Level int
-
+	id int  `gorm:"id" json:"id"`
+	Name string	`gorm:"name" json:"name"`
+	Phone string `gorm:"phone" json:"phone"`
+	CreatedAt *time.Time `gorm:"created_at" json:"created_at"`
+	UpdatedAt *time.Time `gorm:"updated_at" json:"updated_at"`
 }
+
+var Db *gorm.DB
+
 func InitMysql() {
 	//连接数据库
-	db, err := gorm.Open("mysql", "root:123@tcp(127.0.0.1:3306)/dbname?charset=utf8")
+	arrInfo := fmt.Sprintf("%v:%v@tcp(%v)/%v?charset=utf8", ConfigInfo.Mysql.User, ConfigInfo.Mysql.Pwd,ConfigInfo.Mysql.Addr,ConfigInfo.Mysql.Name)
+	Db, err := gorm.Open(ConfigInfo.Mysql.Dialect, arrInfo)
 	//一个坑，不设置这个参数，gorm会把表名转义后加个s，导致找不到数据库的表
-	db.SingularTable(true)
-	defer db.Close()
+	Db.SingularTable(true)
 	if err != nil {
 		panic(err)
 	}
-	var user User
-	fmt.Println(db.HasTable(user))
-
-	var phone="12345678900"
-	//条件查询
-	err = db.Where("phone = ?", phone).Find(&user).Error
-	if err != nil {
-		fmt.Println(err)
-	}
-
-	fmt.Println(user.UserId)
-	//把查询出来的一条数据删除
-	err=db.Delete(&user).Error
-	if err !=nil{
-		fmt.Println(err)
-	}
-
 }

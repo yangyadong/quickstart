@@ -1,0 +1,13 @@
+{
+  "redis": {
+    "addr": "192.168.52.129:6379",
+    "pwd": "123456"
+  },
+  "mysql": {
+    "dialect": "mysql",
+    "addr": "192.168.52.129:3306",
+    "user": "txbs",
+    "pwd": "txbsdb",
+    "name": "txbs"
+  }
+}
